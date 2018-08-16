@@ -16,6 +16,13 @@ public class Array<E> {
     public Array(){
     	data =(E[])new Object[10];
     }
+    public Array(E[] arr){
+    	data=(E[])new Object[arr.length];
+    	for(int i=0;i<arr.length;i++)
+    		data[i]=arr[i];
+    	size=arr.length;
+    		
+    }
     //获取元素个数
     public int getSize(){
     	return size;
@@ -102,6 +109,14 @@ public class Array<E> {
     	    //在最坏的情况下会发生复杂度震荡，影响性能
     	   resize(data.length/2); //缩容
     	return ret;
+    }
+    //交换
+    public void Swap(int i,int j){
+    	if(i<0 || i >=size || j< 0 || j>=size)
+    		throw new IllegalArgumentException("index is illegl");
+    	E e=data[i];
+    	data[i]=data[j];
+    	data[j]=e;
     }
     //扩容机制
     private void resize(int newCapacity){
